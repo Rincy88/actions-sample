@@ -4,18 +4,23 @@ jobs:
   job1:
       runs-on: ubuntu-latest
       name: SBOM generator
+      outputs:
+          output1: ${{ steps.step3.outputs.test }}
       steps:
+        - id: step1
         - uses: actions/checkout@v3
+        - id: step2
         - name: Setup node
           uses: actions/setup-node@v3
           with:
             node-version: '14'
         - run: npm install
-        - name: Create SBOM with CycloneDX
-          id: sbom_output
+        - id: step3
+        - name: Create SBOM with CycloneDX 
           uses: CycloneDX/gh-node-module-generatebom@master
-          with: 
-            output: './test.app.bom.json'     
+            with
+              output:'test.app.bom.json' 
+      
        
   job2:  
      runs-on: ubuntu-latest
