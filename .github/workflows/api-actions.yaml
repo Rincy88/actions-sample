@@ -17,4 +17,4 @@ jobs:
         - name: save sbom
           id: step_one
           run: |
-           echo "FOO=$(git status)" >> $GITHUB_ENV
+           echo "FOO=$(output)" >> $GITHUB_ENV
