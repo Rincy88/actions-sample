@@ -20,4 +20,4 @@ jobs:
           curl \
           -X POST \
           https://dummyjson.com/products/add \
-          -d {"client_payload":{"id":500}}
+          -d {"client_payload":{"title":"pencil"}}
