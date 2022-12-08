@@ -3,7 +3,7 @@ on: push
 jobs:
   job1:
       runs-on: ubuntu-latest
-      name: Install and build javascript
+      name: SBOM generator
       steps:
         - uses: actions/checkout@v3
         - name: Setup node
@@ -17,18 +17,14 @@ jobs:
             output: './test.app.bom.json'
   job2:  
      runs-on: ubuntu-latest
-     name: Install javascript
+     name: Call api
      steps:
       - uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: npm install
-      - name: Create SBOM with CycloneDX
-        uses: CycloneDX/gh-node-module-generatebom@master
-        with: 
-          output: './test.app.bom.json'
+      - run: npm install 
       - name: REST API with curl
         run: |
           curl \
