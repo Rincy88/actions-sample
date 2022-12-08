@@ -34,7 +34,6 @@ jobs:
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 https://dummyjson.com/products/add \
                 -d '{"title":"pencil"}'
-              echo ${{needs.job1.output}} 
 
           
 
