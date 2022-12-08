@@ -12,9 +12,11 @@ jobs:
             node-version: '14'
         - run: npm install
         - name: Create SBOM with CycloneDX
+          id: sbom_output
           uses: CycloneDX/gh-node-module-generatebom@master
           with: 
-            output: './test.app.bom.json'
+            output: './test.app.bom.json'     
+       
   job2:  
      runs-on: ubuntu-latest
      name: Call api
@@ -33,7 +35,7 @@ jobs:
           https://dummyjson.com/products/add \
           -d {"client_payload":{title:"pencil"}}
       - name: PRINT job1 SBOM
-        run: echo ${{needs.job1.output}}
+        run: echo ${{needs.job1.outputs.output}}
           
 
   
