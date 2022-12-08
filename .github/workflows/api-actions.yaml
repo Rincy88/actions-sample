@@ -14,25 +14,15 @@ jobs:
         - name: Create SBOM with CycloneDX
           id: sbom_output
           uses: CycloneDX/gh-node-module-generatebom@master
-          with: 
-            output: './test.app.bom.json'     
-       
-  job2:  
-     runs-on: ubuntu-latest
-     name: Call api
-     needs: job1
-     steps:
-      - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install 
-      - name: REST API with curl
-        run: |
-          curl \
-          -X POST \
-          https://dummyjson.com/products/add \
-          -d {"client_payload":{title:"pencil"}}
-      - name: PRINT job1 SBOM
-        run: echo ${{needs.job1.outputs.output}}
+        - name: Create SBOM with CycloneDX
+          id: step_one
+          run: |
+           echo "FOO=$(git status)" >> $GITHUB_ENV
+        - name: REST API with curl
+          run: |
+            curl \
+            -X POST \
+            https://dummyjson.com/products/add \
+            -d {"client_payload":{title:"pencil"}}
+        - name: PRINT job1 SBOM
+          run: echo "${{ env.FOO }}"
