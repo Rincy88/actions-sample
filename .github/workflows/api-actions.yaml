@@ -17,5 +17,7 @@ jobs:
           output: './test.app.bom.json'
       - name: REST API with curl
         run: |
-          curl -X POST "https://dummyjson.com/products/add"
-               -d {"client_payload":{"test-product":"1"}
+          curl \
+          -X POST \
+          https://dummyjson.com/products/add \
+          -d {"client_payload":{"test-product":"1"}
