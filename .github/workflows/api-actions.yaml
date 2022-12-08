@@ -18,11 +18,3 @@ jobs:
           id: step_one
           run: |
            echo "FOO=$(git status)" >> $GITHUB_ENV
-        - name: REST API with curl
-          run: |
-            curl \
-            -X POST \
-            https://dummyjson.com/products/add \
-            -d {"client_payload":{title:"pencil"}}
-        - name: PRINT job1 SBOM
-          run: echo "${{ env.FOO }}"
