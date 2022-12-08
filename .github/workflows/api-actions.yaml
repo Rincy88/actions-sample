@@ -15,6 +15,6 @@ jobs:
         uses: CycloneDX/gh-node-module-generatebom@master
         with: 
           output: './test.app.bom.json'
-      - name: call REST API with curl
+      - name: REST API with curl
         run: |
          curl "http://localhost:3000/posts"
