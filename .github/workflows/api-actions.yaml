@@ -21,4 +21,4 @@ jobs:
           -X POST \
           -H "Accept: application/vnd.github+json" \
           https://dummyjson.com/products/add \
-          -d {"title":"pencil"}
+          -d '{"title":"pencil"}'
