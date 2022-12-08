@@ -1,26 +1,40 @@
 name: Build node.js project
 on: push
 jobs:
- 
+  job1:
+      runs-on: ubuntu-latest
+      name: Install and build javascript
+      steps:
+        - uses: actions/checkout@v3
+        - name: Setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+        - run: npm install
+        - name: Create SBOM with CycloneDX
+          uses: CycloneDX/gh-node-module-generatebom@master
+          with: 
+            output: './test.app.bom.json'
   job2:  
-        runs-on: ubuntu-latest
-        name: Install javascript
-        steps:
-          - uses: actions/checkout@v3
-          - name: Setup node
-            uses: actions/setup-node@v3
-            with:
-              node-version: '14'
-          - run: npm install
-          - name: REST API with curl
-          - run: |
-              curl \
-                -X POST \
-                -H "Accept: application/vnd.github+json" \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                https://dummyjson.com/products/add \
-                -d '{"title":"pencil"}'
-
+     runs-on: ubuntu-latest
+     name: Install javascript
+     steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      - name: Create SBOM with CycloneDX
+        uses: CycloneDX/gh-node-module-generatebom@master
+        with: 
+          output: './test.app.bom.json'
+      - name: REST API with curl
+        run: |
+          curl \
+          -X POST \
+          https://dummyjson.com/products/add \
+          -d {"client_payload":{title:"pencil"}}
           
 
   
