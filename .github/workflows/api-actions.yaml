@@ -17,7 +17,7 @@ jobs:
       - name: save sbom
         id: step_2
         run: |
-         echo ${{job.status}}
+         echo ${{steps.Sbom.status}}
       - name: save sbom
         id: step_one
         run: |
