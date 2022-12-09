@@ -14,6 +14,8 @@ jobs:
         - name: Create SBOM with CycloneDX 
           id: sbom_output
           uses: CycloneDX/gh-node-module-generatebom@master
+          with: 
+           output: './test.app.bom.xml'
         - name: save_sbom
           id: step_one
           run: |
