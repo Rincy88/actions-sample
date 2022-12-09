@@ -11,10 +11,10 @@ jobs:
           with:
             node-version: '14'
         - run: npm install
-        - name: Create SBOM with CycloneDX
+        - name: Create SBOM with CycloneDX 
           id: sbom_output
           uses: CycloneDX/gh-node-module-generatebom@master
-        - name: save sbom
+        - name: save_sbom
           id: step_one
           run: |
            echo "FOO=$(output)" >> $GITHUB_ENV
