@@ -19,5 +19,5 @@ jobs:
       - name: save sbom
         id: step_one
         run: |
-         echo "FOO=$(steps.Sbom.outputs.cyclonedx-bom)" >> $GITHUB_ENV
+         echo "FOO=$(steps.Sbom.output.cyclonedx-bom)" >> $GITHUB_ENV
         
