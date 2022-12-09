@@ -16,6 +16,8 @@ jobs:
         uses: CycloneDX/gh-node-module-generatebom@master
         with: 
           output: './test.app.bom.xml'
-      - name: Save sbom
-      - run:  echo {{$steps.id.outputs.cyclonedx-bom}}
+      - name: save sbom
+        id: step_one
+        run: |
+         echo "FOO=$(steps.Sbom.outputs.cyclonedx-bom)" >> $GITHUB_ENV
         
