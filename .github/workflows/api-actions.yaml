@@ -13,11 +13,8 @@ jobs:
       - run: npm install
       - name: Create SBOM with CycloneDX
         id: Sbom
-        uses: CycloneDX/gh-node-module-generatebom@master 
-      - name: save sbom
-        id: step_2
-        run: |
-         echo ${{steps.Sbom.status}}
+        uses: CycloneDX/gh-node-module-generatebom@master  
+         echo ${{job.status}}
       - name: save sbom
         id: step_one
         run: |
