@@ -3,7 +3,7 @@ on: push
 jobs:
   job1:
       runs-on: ubuntu-latest
-      name: SBOM generator
+      name: SBOM generator 
       steps:
         - uses: actions/checkout@v3
         - name: Setup node
@@ -12,10 +12,14 @@ jobs:
             node-version: '14'
         - run: npm install
         - name: Create SBOM with CycloneDX 
-          id: sbom_output
+          id: sbom_generator
           uses: CycloneDX/gh-node-module-generatebom@master
           with: 
-           output: './test.app.bom.xml'
+           output: './test.app.bom.json'
+        - name: print sbom
+          id: print_sbom
+          run: |
+           echo "${{ steps.sbom_generator.outputs.files }}" >  test.app.bom.txt
         - name: save_sbom
           id: step_one
           run: |
