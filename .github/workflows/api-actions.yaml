@@ -15,5 +15,5 @@ jobs:
           id: sbom_generator
           uses: CycloneDX/gh-node-module-generatebom@master
           with: 
-           path: './node_project/'
+           path: './actions-sample/'
            output: './bom_directory/test.app.bom.xml'
