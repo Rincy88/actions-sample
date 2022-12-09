@@ -13,18 +13,6 @@ jobs:
         - run: npm install
         - name: Create SBOM with CycloneDX 
           id: sbom_generator
-          uses: CycloneDX/gh-node-module-generatebom@master
+          uses: CycloneDX/gh-node-module-generatebom@master > at.json
           with: 
-           output: './test.app.bom.json'
-        - name: print sbom
-          id: print_sbom
-          run: |
-           echo "${{ steps.sbom_generator.output }}" >  test.app.bom.txt
-        - name: save_sbom
-          id: step_one
-          run: |
-           echo "sbom=${{steps.sbom_generator.output}}" >> $GITHUB_ENV
-        - name: Use the value
-          id: step_two
-          run: |
-            echo "${{ env.sbom }}" # This will output 'SBOM'
+           output: './test.app.bom.json' 
