@@ -19,7 +19,7 @@ jobs:
         - name: save_sbom
           id: step_one
           run: |
-           echo "sbom=${{job.sbom_output.output}}" >> $GITHUB_ENV
+           echo "sbom=${{job1.sbom_output.output}}" >> $GITHUB_ENV
         - name: Use the value
           id: step_two
           run: |
