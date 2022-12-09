@@ -17,7 +17,7 @@ jobs:
       - name: save sbom
         id: step_2
         run: |
-         echo '::set-output name=FAV_NUMBER::3'
+         echo ${{job.status}}
       - name: save sbom
         id: step_one
         run: |
