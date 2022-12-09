@@ -14,7 +14,9 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: Sbom
         uses: CycloneDX/gh-node-module-generatebom@master  
-         echo "Hello" >> $GITHUB_ENV
+        with:
+         run: |
+          echo "Hello" >> $GITHUB_ENV
       - name: save sbom
         id: step_one
         run: |
