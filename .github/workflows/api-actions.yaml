@@ -19,11 +19,11 @@ jobs:
         - name: print sbom
           id: print_sbom
           run: |
-           echo "${{ steps.sbom_generator.outputs.files }}" >  test.app.bom.txt
+           echo "${{ steps.sbom_generator.output }}" >  test.app.bom.txt
         - name: save_sbom
           id: step_one
           run: |
-           echo "sbom=${{steps.sbom_generator.outputs.files}}" >> $GITHUB_ENV
+           echo "sbom=${{steps.sbom_generator.output}}" >> $GITHUB_ENV
         - name: Use the value
           id: step_two
           run: |
