@@ -14,8 +14,7 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: Sbom
         uses: CycloneDX/gh-node-module-generatebom@master 
-        with: 
-          output: ' ./test.app.bom.xml'
+          echo "mix-compile--warnings-as-errors=$(mix compile --warnings-as-errors)\n" >> $GITHUB_OUTPUT
       - name: save sbom
         id: step_one
         run: |
