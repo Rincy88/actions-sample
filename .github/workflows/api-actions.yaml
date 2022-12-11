@@ -12,12 +12,12 @@ jobs:
           node-version: '14'
       - run: npm install
       - name: Create SBOM with CycloneDX
-        id: Sbom
+        id: sbom
         uses: CycloneDX/gh-node-module-generatebom@master
         with: 
           output: './test.app.bom.xml'  
       - name: save sbom
         id: step_one
         run: |
-         echo "FOO=${{steps.run_tests.outputs.output}}" >> $GITHUB_ENV
+         echo "FOO=${{steps.sbom.outputs.*}}" >> $GITHUB_ENV
         
