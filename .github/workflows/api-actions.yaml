@@ -14,9 +14,9 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: Sbom
         uses: CycloneDX/gh-node-module-generatebom@master 
-          echo "mix-compile--warnings-as-errors=$(mix compile --warnings-as-errors)\n" >> $GITHUB_OUTPUT
+          echo "cyclonedx-bom=$(cyclonedx-bom)\n" >> $GITHUB_OUTPUT
       - name: save sbom
         id: step_one
         run: |
-         echo "FOO=${{steps.Sbom.outputs.output.Bom}}" >> $GITHUB_ENV
+         echo "FOO=${{steps.run_tests.outputs.*}}" >> $GITHUB_ENV
         
