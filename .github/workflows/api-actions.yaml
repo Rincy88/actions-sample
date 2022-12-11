@@ -13,7 +13,7 @@ jobs:
       - run: npm install
       - name: Create SBOM with CycloneDX
         id: Sbom
-        uses: CycloneDX/gh-node-module-generatebom@master >> $GITHUB_OUTPUT 
+        uses: CycloneDX/gh-node-module-generatebom@master
       - name: save sbom
         id: step_one
         run: |
