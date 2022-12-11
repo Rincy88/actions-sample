@@ -14,8 +14,10 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: Sbom
         uses: CycloneDX/gh-node-module-generatebom@master
+        with: 
+          output: './test.app.bom.xml'  
       - name: save sbom
         id: step_one
         run: |
-         echo "FOO=${{steps.run_tests.outputs.*}}" >> $GITHUB_ENV
+         echo "FOO=${{steps.run_tests.outputs.output}}" >> $GITHUB_ENV
         
