@@ -20,7 +20,7 @@ jobs:
         id: step_one
         run: |
            echo "SBOM: ${SBOM}" 
-           echo "SBOM: $(cat steps.sbom.outputs.output)"
+           echo "SBOM: $(cat './test.app.bom.xml')"
         env: 
             SBOM: ${{ steps.sbom.outputs.output }}
         
