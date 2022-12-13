@@ -20,10 +20,9 @@ jobs:
             output: './test.app.bom.xml'
       - name: save sbom
         id: step_one
-        run: |
-           echo "SBOM: ${SBOM}" 
-           echo "text<<EOF" >> $GITHUB_OUTPUT
-           echo "test: $(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
+        run: | 
+           echo "test<<EOF" >> $GITHUB_OUTPUT
+           echo "$(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
            echo "EOF" >> $GITHUB_OUTPUT 
            echo "SBOM: $(cat './test.app.bom.xml')"     
   job2:
