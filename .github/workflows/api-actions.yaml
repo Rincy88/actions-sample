@@ -13,9 +13,9 @@ jobs:
       - run: npm install
       - name: Create SBOM with CycloneDX
         id: sbom
-        uses: CycloneDX/gh-node-module-generatebom@master
-        with: 
-          output: './test.app.bom.json'  
+        uses: CycloneDX/gh-node-module-generatebom@master 
+        with:
+            artifact-name: sbom.json
       - name: save sbom
         id: step_one
         run: |
