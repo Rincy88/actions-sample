@@ -19,5 +19,7 @@ jobs:
       - name: save sbom
         id: step_one
         run: |
-         echo "FOO=${{steps.sbom.outputs.output}}" >> $GITHUB_ENV
+           echo "SBOM: ${SBOM}"
+        env: 
+            SBOM: ${{ steps.sbom.outputs.output }}
         
