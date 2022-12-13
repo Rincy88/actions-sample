@@ -4,7 +4,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.sbom.outputs.test }}
+      output1: ${{ steps.save_sbom.outputs.test }}
     name: Install and build javascript
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
         with:
             output: './test.app.bom.xml'
       - name: save sbom
-        id: step_one
+        id: save_sbom
         run: | 
            echo "test<<EOF" >> $GITHUB_OUTPUT
            echo "$(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
