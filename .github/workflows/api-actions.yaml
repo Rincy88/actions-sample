@@ -19,7 +19,8 @@ jobs:
       - name: save sbom
         id: step_one
         run: |
-           echo "SBOM: ${SBOM}"
+           echo "SBOM: ${SBOM}" 
+           echo "SBOM: $(cat steps.sbom.outputs.output)"
         env: 
             SBOM: ${{ steps.sbom.outputs.output }}
         
