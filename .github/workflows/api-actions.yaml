@@ -1,8 +1,10 @@
 name: Build javascript project
 on: push
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.sbom.outputs.test }}
     name: Install and build javascript
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +22,12 @@ jobs:
         id: step_one
         run: |
            echo "SBOM: ${SBOM}" 
-           echo "SBOM: $(cat './test.app.bom.xml')"
-        env: 
-            SBOM:  $(cat './test.app.bom.xml')
+           echo "test=$(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
+           echo "SBOM: $(cat './test.app.bom.xml')" 
+           job2:
+            runs-on: ubuntu-latest
+            needs: job1
+            steps:
+            - run: echo ${{needs.job1.outputs.output1}}
+       
         
