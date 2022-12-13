@@ -26,10 +26,4 @@ jobs:
            echo "test: $(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
            echo "EOF" >> $GITHUB_OUTPUT 
            echo "SBOM: $(cat './test.app.bom.xml')" 
-           job2:
-            runs-on: ubuntu-latest
-            needs: job1
-            steps:
-            - run: echo ${{needs.job1.outputs.output1}}
-       
         
