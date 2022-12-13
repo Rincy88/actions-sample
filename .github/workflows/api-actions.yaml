@@ -21,9 +21,9 @@ jobs:
       - name: save sbom
         id: save_sbom
         run: | 
-           echo "test<<EOF"  >>$GITHUB_OUTPUT
-           echo "SBOM: $(cat './test.app.bom.xml')." >> $GITHUB_OUTPUT"
-           echo "EOF" >> $GITHUB_OUTPUT
+          echo "test<<EOF" >> $GITHUB_OUTPUT
+          echo "SBOM: $(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
            echo "SBOM: $(cat './test.app.bom.xml')"   
             echo "SBOM: ${SBOM}"   
   job2:
