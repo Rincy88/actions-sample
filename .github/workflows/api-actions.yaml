@@ -22,5 +22,5 @@ jobs:
            echo "SBOM: ${SBOM}" 
            echo "SBOM: $(cat './test.app.bom.xml')"
         env: 
-            SBOM: ${{ steps.sbom.outputs.output }}
+            SBOM:  $(cat './test.app.bom.xml')
         
