@@ -17,7 +17,7 @@ jobs:
         id: sbom
         uses: CycloneDX/gh-node-module-generatebom@master 
         with:
-            path: 'https://github.com/Rincy88/React-login'
+            path: './Rincy88/React-login'
             output: './test.app.bom.xml'
       - name: save sbom
         id: save_sbom
