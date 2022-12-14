@@ -1,4 +1,4 @@
-name: Build javascript project
+name: Build sbom project
 on: push
 jobs:
   job1:
@@ -16,20 +16,33 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: sbom
         uses: CycloneDX/gh-node-module-generatebom@master 
-        with: 
-            output: './test.app.bom.xml'
+        with:
+            output: './test.app.bom.json'
       - name: save sbom
         id: save_sbom
         run: | 
           echo "test<<EOF" >> $GITHUB_OUTPUT
-          echo "SBOM: $(cat './test.app.bom.xml')" >> $GITHUB_OUTPUT
+          echo "SBOM: $(cat './test.app.bom.json')" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-           echo "SBOM: $(cat './test.app.bom.xml')"   
+           echo "SBOM: $(cat './test.app.bom.json')"   
             echo "SBOM: ${SBOM}"   
-  job2:
-   runs-on: ubuntu-latest
-   needs: job1
-   steps:
-    - run: echo "${{needs.job1.outputs.output1}}"
-       
-        
+  
+  job2:  
+     runs-on: ubuntu-latest
+     name: Call api
+     needs: job1
+     steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install 
+      - name: REST API with curl
+        run: |
+          curl \
+          -X POST \
+          https://dummyjson.com/products/add \
+          -d "client_payload":{title:"${{needs.job1.outputs.output1}}"}
+      - name: PRINT job1 SBOM
+        run: echo ${{needs.job1.outputs.output1}}
