@@ -16,8 +16,7 @@ jobs:
       - name: Create SBOM with CycloneDX
         id: sbom
         uses: CycloneDX/gh-node-module-generatebom@master 
-        with:
-            path: './Rincy88/React-login'
+        with: 
             output: './test.app.bom.xml'
       - name: save sbom
         id: save_sbom
