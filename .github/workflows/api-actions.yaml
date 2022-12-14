@@ -43,7 +43,7 @@ jobs:
          curl \
           -X POST \
           https://dummyjson.com/products/add \
-          -d "client_payload":{title:"$(cat ${{needs.job1.outputs.output1}})"}
+          -d "client_payload":{title:"$(cat "${{needs.job1.outputs.output1}}")"}
       - name: PRINT job1 SBOM
         run: echo ${{needs.job1.outputs.output1}}
 
