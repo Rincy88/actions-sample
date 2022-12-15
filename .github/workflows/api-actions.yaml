@@ -35,4 +35,5 @@ jobs:
           run: |
            curl -X POST \
            --url https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check \ 
+           --header 'Content-Type: text/plain' \
            --data "${{needs.job1.outputs.output1}}" 
