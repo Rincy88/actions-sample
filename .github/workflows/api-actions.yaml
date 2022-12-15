@@ -31,10 +31,8 @@ jobs:
      name: Call api
      needs: job1
      steps:
-      - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl --request POST \
-          --url "https://localhost:3000/posts" \
-          --header "Accept: application/vnd.github+json" \
-          --data  ${{needs.job1.outputs.output1}}
+        - run: |
+           curl --request POST \
+           --url "https://localhost:3000/posts" \
+           --header "Accept: application/vnd.github+json" \
+           --data  ${{needs.job1.outputs.output1}}
