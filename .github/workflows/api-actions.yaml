@@ -1,11 +1,11 @@
-name: Send SBOM to Api
+name: Build sbom project
 on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.save_sbom.outputs.test }}
-    name: Install and build javascript
+    name: Install all dependencies
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -22,22 +22,19 @@ jobs:
         id: save_sbom
         run: | 
           echo "test<<EOF" >> $GITHUB_OUTPUT
-          echo "SBOM: $(cat './test.app.bom.json')" >> $GITHUB_OUTPUT
+          echo "$(cat './test.app.bom.json')" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-           echo "SBOM: $(cat './test.app.bom.json')"   
-            echo "SBOM: ${SBOM}"   
+         
   
   job2:  
      runs-on: ubuntu-latest
      name: Call api
      needs: job1
      steps:
-      - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install 
-      - name: PRINT job1 SBOM
-        run: echo $(cat ${{needs.job1.outputs.output1}})
-
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl --request POST \
+          --url "https://localhost:3000/posts" \
+          --header "Accept: application/vnd.github+json" \
+          --data  ${{needs.job1.outputs.output1}}
