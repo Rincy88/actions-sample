@@ -1,4 +1,3 @@
- 
 name: Build sbom projects
 on: push
 jobs:
@@ -6,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.save_sbom.outputs.test }}
-    name: Generate SBOM
+    name: Install all dependencies
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -29,12 +28,13 @@ jobs:
   
   job2:  
      runs-on: ubuntu-latest
-     name: Call Api
+     name: Call api
      needs: job1
      steps:
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
          curl --request POST \
-         --url "https://jsonplaceholder.typicode.com/posts" \ 
-         --data '${{needs.job1.outputs.output}}'
+         --url "https://api.github.com/repos/octocat/Spoon-Knife/issues" \
+         --header "Accept: application/vnd.github+json" \
+         --data '${{needs.job1.outputs.output1}}'
