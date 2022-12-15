@@ -38,4 +38,4 @@ jobs:
          curl --request POST \
          --url "https://api.github.com/repos/octocat/Spoon-Knife/issues" \
          --header "Accept: application/vnd.github+json" \
-         --data ${{steps.save_sbom.outputs.output}}
+         --data '${{steps.save_sbom.outputs.output1}}'
