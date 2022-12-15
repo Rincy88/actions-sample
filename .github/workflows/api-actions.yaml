@@ -39,5 +39,5 @@ jobs:
           node-version: '14'
       - run: npm install 
       - name: PRINT job1 SBOM
-        run: echo "${{needs.job1.outputs.output1}}"
+        run: echo $(cat ${{needs.job1.outputs.output1}})
 
