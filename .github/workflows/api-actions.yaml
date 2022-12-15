@@ -33,7 +33,7 @@ jobs:
      steps: 
         - name: Call Api
           run: |
-           curl -X POST \
+           curl --request POST \
            --url https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check \ 
            --header 'Content-Type: text/plain' \
            --data "${{needs.job1.outputs.output1}}" 
