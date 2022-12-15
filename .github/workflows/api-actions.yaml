@@ -29,7 +29,7 @@ jobs:
   
   job2:  
      runs-on: ubuntu-latest
-     name: Call api
+     name: Call Api
      needs: job1
      steps:
       - env:
