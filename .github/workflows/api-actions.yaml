@@ -36,6 +36,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
          curl --request POST \
-         --url "https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check" \
-         --header "Accept: application/vnd.github+json" \
+         --url "https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check" \ 
          --data '${{needs.job1.outputs.output}}'
