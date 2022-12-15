@@ -36,5 +36,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
          curl --request POST \
-         --url "https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check" \ 
+         --url "https://jsonplaceholder.typicode.com/posts" \ 
          --data '${{needs.job1.outputs.output}}'
