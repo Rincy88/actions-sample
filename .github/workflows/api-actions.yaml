@@ -1,4 +1,4 @@
-name: Build sbom project
+name: Send SBOM to Api
 on: push
 jobs:
   job1:
