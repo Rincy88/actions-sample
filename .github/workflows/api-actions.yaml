@@ -34,5 +34,7 @@ jobs:
         - name: Call Api
           run: |
            curl -k --request POST 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \
-           --header 'Content-Type: text/plain' \
-           --data-raw '{"id":1}'
+           --header 'Content-Type: application/json' \
+           --data '{
+            "bomFormat": "CycloneDX"
+           }'
