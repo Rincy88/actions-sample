@@ -33,7 +33,6 @@ jobs:
      steps: 
         - name: Call Api
           run: |
-           curl -K POST \
-            --url "https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check" \ 
-            --header "Accept: application/vnd.github+json" \
-            --data '${{needs.job1.outputs.output1}}' 
+           curl -k --request POST 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \
+           --header 'Content-Type: text/plain' \
+           --data-raw '{"id":1}'
