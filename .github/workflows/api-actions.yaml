@@ -35,6 +35,4 @@ jobs:
           run: |
            curl -k --request POST 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \
            --header 'Content-Type: application/json' \
-           --data '{
-            "bomFormat": "CycloneDX"
-           }'
+           --data '{{$needs.job1.outputs.output}}'
