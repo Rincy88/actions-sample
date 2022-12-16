@@ -23,16 +23,9 @@ jobs:
         run: | 
           echo "test<<EOF" >> $GITHUB_OUTPUT
           echo "$(cat './test.app.bom.json')" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-         
-  
-  job2:  
-     runs-on: ubuntu-latest
-     name: Call api
-     needs: job1
-     steps: 
-        - name: Call Api
-          run: |
+          echo "EOF" >> $GITHUB_OUTPUT  
+      - name: Call Api
+        run: |
            curl -k --request POST 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \
            --header 'Content-Type: application/json' \
-           -F '${{needs.job1.outputs.output1}}'
+           -F '${{steps.save_sbom.outputs.test}}'
