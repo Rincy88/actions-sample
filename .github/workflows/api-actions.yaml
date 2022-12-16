@@ -34,6 +34,6 @@ jobs:
         - name: Call Api
           run: |
            curl --request POST \
-           --url https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check \ 
+           --url 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \ 
            --header 'Content-Type: text/plain' \
            --data "${{needs.job1.outputs.output1}}" 
