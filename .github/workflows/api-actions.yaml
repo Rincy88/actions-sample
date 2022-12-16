@@ -28,4 +28,4 @@ jobs:
         run: |
            curl -k --request POST 'https://dt.cryptosoft.com:9443/api/v1/sbom/sbom-check' \
            --header 'Content-Type: application/json' \
-           -F '${{steps.save_sbom.outputs.test}}'
+           -d '${{steps.save_sbom.outputs.test}}'
